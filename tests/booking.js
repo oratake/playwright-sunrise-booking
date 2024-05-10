@@ -1,7 +1,10 @@
-import { test, expect, type Page } from '@playwright/test';
-import * as authString from '../playwright/.auth/user.json';
+const playwright = require('playwright');
 
-test('サンライズの予約', async ({ page }) => {
+(async () => {
+  const browser = await playwright['chromium'].launch({
+    headless: false,
+  });
+  const page = await browser.newPage();
   await page.goto('https://www.jr-odekake.net/goyoyaku/campaign/sunriseseto_izumo/form.html');
   // await page.locator('#member-yes').click();
   await page.locator('#member-no').click();
@@ -43,7 +46,7 @@ test('サンライズの予約', async ({ page }) => {
   await page.locator('#submitButton').click();
 
   // 空き表示画面
-  await page.waitForSelector();
+  await page.waitForSelector('.seat-facility-none');
   // // 認証
   // await page.locator('#label-westerid').fill(authString.username);
   // await page.locator('#textPassword').fill(authString.password);
@@ -57,4 +60,5 @@ test('サンライズの予約', async ({ page }) => {
   // await page.getByLabel('パスワード', { exact: true }).click();
   // await page.getByLabel('パスワード', { exact: true }).fill('fuga');
   // await page.getByRole('button', { name: 'ログイン' }).click();
-});
+  await browser.close();
+})();
