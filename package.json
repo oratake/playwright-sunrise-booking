@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "codegen": "npx playwright codegen https://www.jr-odekake.net/goyoyaku/campaign/sunriseseto_izumo/form.html",
+    "test": "npx playwright test tests.spec.ts"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
