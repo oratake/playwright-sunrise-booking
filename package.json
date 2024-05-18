@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "codegen": "npx playwright codegen https://www.jr-odekake.net/goyoyaku/campaign/sunriseseto_izumo/form.html",
-    "test": "npx playwright test tests.spec.ts"
+    "test": "npx playwright test tests.spec.ts",
+    "auto": "node tests/get_booking.js"
   },
   "keywords": [],
   "author": "",
